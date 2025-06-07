@@ -32,8 +32,8 @@
         <br>
         <label for="classroom mode">Enable Classroom mode? WARNING: You can only see the end time and there will be NO countdown!</label>
         <select id="classroom mode">
-            <option value="true">Enable</option>
             <option value="false">Disable</option>
+            <option value="true">Enable</option>
         </select>
     </div>
     <p id="timer"></p>
@@ -64,6 +64,7 @@
         async function countdown() {
             document.getElementById("timerControls").hidden = true;
             document.getElementById("start").hidden = true;
+            document.getElementById("someSettings").hidden = true;
             const addnOpt = document.getElementById("additionalMaterias").value;
             const tradMode = document.getElementById("classroom mode").value;
             if (tradMode == "true") {

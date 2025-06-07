@@ -29,8 +29,8 @@
         const timeDurat = sessionStorage.getItem("duration");
         let now = new Date();
         let later = new Date(now.getTime() + timeDurat * 1000);
-        document.getElementById("startTime").innerHTML = "Start: " + now.getHours() + ":" + now.getMinutes();
-        document.getElementById("endTime").innerHTML = "End: " + later.getHours() + ":" + later.getMinutes();
+        document.getElementById("startTime").innerHTML = "Start: " + now.getHours().padStart(2, "0") + ":" + now.getMinutes().padStart(2, "0");
+        document.getElementById("endTime").innerHTML = "End: " + later.getHours().padStart(2, "0") + ":" + later.getMinutes().padStart(2, "0");
 
         function endExam() {
             const intervalId = setInterval(() => {
