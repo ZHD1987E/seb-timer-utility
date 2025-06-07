@@ -59,7 +59,8 @@
             document.getElementById("start").hidden = true;
             while (true) {
                 if (totalSeconds <= 0) {
-                    alert("Time is up!")
+                    document.getElementById("WarningMessage").textContent = "Time is up!!!";
+                    await delay(3000);
                     window.location.href = "finish.html"
                     return;
                 }
