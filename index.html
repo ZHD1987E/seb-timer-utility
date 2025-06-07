@@ -7,30 +7,58 @@
 </head>
 <body>
     <h1>Test timer</h1>
-    <div id="timer">00:00</p>
+    <button id="1hselect">1 hour</button>
+    <button id="2hselect">2 hours</button>
+    <button id="3hselect">3 hours</button>
+    <div id="timer">00:00:00</p>
+    <button id="start">Start!</button>
+    <div id="disclaimer">The start button is meant for 1 hour only.</div>
     <script>
-        let totalSeconds = 100
+        let totalSeconds = 5
         
-        function updateTimerDisplay() {
-        const minutes = Math.floor(totalSeconds / 60);
-        const seconds = totalSeconds % 60;
-        document.getElementById("timer").textContent =
-            String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
+        function oneHourSelected() {
+            totalSeconds = 3600;
+            console.log("One hour selected!")
         }
 
-        function countdown() {
-        if (totalSeconds <= 0) {
-            if (typeof seb !== 'undefined' && typeof seb.quit === 'function') {
-            seb.quit();  // Close SEB
-            } else {
-            alert("Timer done — SEB not detected.");
+        function twoHourSelected() {
+            totalSeconds = 3600 * 2;
+            console.log("Two hours selected!")
+        }
+
+        function threeHourSelected() {
+            totalSeconds = 3600 * 3;
+            console.log("Three hours selected!")
+        }
+
+        async function delay(seconds) {
+            return new Promise(resolve => setTimeout(resolve, seconds));
+        }
+
+        function updateTimerDisplay() {
+        const hours = Math.floor(totalSeconds / 3600)
+        const minutes = Math.floor(totalSeconds % 3600 / 60);
+        const seconds = totalSeconds % 60;
+        document.getElementById("timer").textContent =
+            String(hours).padStart(2, "0") + ":" + String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
+        }
+
+        async function countdown() {
+            while (true) {
+                if (totalSeconds <= 0) {
+                    window.location.href = "finish.html"
+                    return;
+                }
+                totalSeconds--;
+                await delay(1000);
+                updateTimerDisplay();
             }
-            return;
         }
-        totalSeconds--;
-        console.log(totalSeconds);
-        updateTimerDisplay();
-        }
+
+        document.getElementById("1hselect").addEventListener("click", oneHourSelected);
+        document.getElementById("2hselect").addEventListener("click", twoHourSelected);
+        document.getElementById("3hselect").addEventListener("click", threeHourSelected);
+        document.getElementById("start").addEventListener("click", countdown);
     </script>
 </body>
 </html>
