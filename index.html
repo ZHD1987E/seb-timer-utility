@@ -6,7 +6,7 @@
     <title>Timing Application</title>
     <style>
         #timer {
-            font-size:xx-large
+            font-size:25vh;
         }
     </style>
 </head>
@@ -36,7 +36,7 @@
             <option value="true">Enable</option>
         </select>
     </div>
-    <p id="timer"></p>
+    <p id="timer" hidden = true></p>
     <p id="WarningMessage"></p>
     <button id="start" hidden = true>Start!</button>
     <button id="Reopenattachment" hidden = true>Reopen attachment?</button>
@@ -46,7 +46,6 @@
         function varyValue(chosenValue) {
             console.log("A setting has changed!")
             totalSeconds = Number(chosenValue);
-            updateTimerDisplay();
             document.getElementById("start").hidden = false;
         }
 
@@ -63,9 +62,11 @@
         }
 
         async function countdown() {
+            document.getElementById("timer").hidden = false;
             document.getElementById("timerControls").hidden = true;
             document.getElementById("start").hidden = true;
             document.getElementById("someSettings").hidden = true;
+            updateTimerDisplay();
             const addnOpt = document.getElementById("additionalMaterias").value;
             const tradMode = document.getElementById("classroom mode").value;
             if (tradMode == "true") {
@@ -84,19 +85,13 @@
                         document.getElementById("Reopenattachment").addEventListener("click", function() {window.open("CDB.pdf", "_blank")});
                         break;
                 }
-                
                 while (true) {
                     if (totalSeconds <= 0) {
-                        document.getElementById("WarningMessage").textContent = "Time is up!!!";
+                        document.getElementById("timer").textContent = "Time's up!!!";
+                        document.getElementById("Reopenattachment").hidden = true;
                         await delay(3000);
                         window.location.href = "finish.html"
                         return;
-                    }
-                    if (totalSeconds === 900) {
-                        document.getElementById("WarningMessage").textContent = "15 minutes remain.";
-                    }
-                    if (totalSeconds === 300) {
-                        document.getElementById("WarningMessage").textContent = "5 minutes remain.";
                     }
                     totalSeconds--;
                     await delay(1000);
