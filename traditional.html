@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+
+        #startandend {
+            font-size: 5vw;
+        }
+    </style>
+</head>
+<body>
+    <div id="startandend">
+        <p id="startTime"></p>
+        <p id="endTime"></p>
+    </div>
+
+    <script>
+        const timeDurat = sessionStorage.getItem("duration");
+        let now = new Date();
+        let later = new Date(now.getTime() + timeDurat * 1000);
+        document.getElementById("startTime").innerHTML = "Start: " + now.getHours() + ":" + now.getMinutes();
+        document.getElementById("endTime").innerHTML = "End: " + later.getHours() + ":" + later.getMinutes();
+
+        function endExam() {
+            while (true) {
+                const checkTime = new Date();
+                if (checkTime >= later) {
+                    window.location.href = "finish.html";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

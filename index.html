@@ -14,11 +14,26 @@
     <h1>Simple Lockdown Timer</h1>
     <div id="timerControls">
     <select id="choosing">
+        <option value=30>30 seconds - TESTING USE ONLY!</option>
         <option value=3600>1 hour</option>
         <option value=5400>1.5 hours</option>
         <option value=7200>2 hours</option>
         <option value=9000>2.5 hours</option>
         <option value=10800>3 hours</option>
+        </select>
+    </div>
+    <div id="someSettings">
+        <label for="additionalMaterias">Additional Materials You may need</label>
+        <select id="additionalMaterias">
+            <option value="">None</option>
+            <option value="MathMF">MF27 (ONLY for Mathematics Paper)</option>
+            <option value="ChemDB">Data Booklet for Chemistry</option>
+        </select>
+        <br>
+        <label for="classroom mode">Enable Classroom mode? WARNING: You can only see the end time and there will be NO countdown!</label>
+        <select id="classroom mode">
+            <option value="true">Enable</option>
+            <option value="false">Disable</option>
         </select>
     </div>
     <p id="timer"></p>
@@ -49,23 +64,40 @@
         async function countdown() {
             document.getElementById("timerControls").hidden = true;
             document.getElementById("start").hidden = true;
-            while (true) {
-                if (totalSeconds <= 0) {
-                    document.getElementById("WarningMessage").textContent = "Time is up!!!";
-                    await delay(3000);
-                    window.location.href = "finish.html"
-                    return;
+            const addnOpt = document.getElementById("additionalMaterias").value;
+            const tradMode = document.getElementById("classroom mode").value;
+            if (tradMode == "true") {
+                sessionStorage.setItem("duration", totalSeconds);
+                window.location.href = "traditional.html";
+            } else {
+                switch (addnOpt) {
+                    case "MathMF":
+                        window.open("MF27.pdf", "_blank");
+                        break;
+                    case "ChemDB":
+                        window.open("CDB.pdf", "_blank");
+                        break;
                 }
-                if (totalSeconds === 900) {
-                    document.getElementById("WarningMessage").textContent = "15 minutes remain.";
+                
+                while (true) {
+                    if (totalSeconds <= 0) {
+                        document.getElementById("WarningMessage").textContent = "Time is up!!!";
+                        await delay(3000);
+                        window.location.href = "finish.html"
+                        return;
+                    }
+                    if (totalSeconds === 900) {
+                        document.getElementById("WarningMessage").textContent = "15 minutes remain.";
+                    }
+                    if (totalSeconds === 300) {
+                        document.getElementById("WarningMessage").textContent = "5 minutes remain.";
+                    }
+                    totalSeconds--;
+                    await delay(1000);
+                    updateTimerDisplay();
                 }
-                if (totalSeconds === 300) {
-                    document.getElementById("WarningMessage").textContent = "5 minutes remain.";
-                }
-                totalSeconds--;
-                await delay(1000);
-                updateTimerDisplay();
             }
+
         }
         document.getElementById("start").addEventListener("click", countdown);
         document.getElementById("choosing").addEventListener("click", function(event) {
