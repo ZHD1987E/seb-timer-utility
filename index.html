@@ -7,28 +7,39 @@
 </head>
 <body>
     <h1>Simple Lockdown Timer</h1>
+    <div id="timerControls">
     <button id="1hselect">1 hour</button>
     <button id="2hselect">2 hours</button>
     <button id="3hselect">3 hours</button>
-    <div id="timer"></p>
-    <button id="start">Start!</button>
-    <div id="disclaimer">The start button is meant for 1 hour only.</div>
+    </div>
+    <p id="timer"></p>
+    <p id="WarningMessage"></p>
+    <button id="start" hidden = true>Start!</button>
     <script>
         let totalSeconds = 5
         
+        function showStart() {
+            document.getElementById("start").hidden = false
+        }
         function oneHourSelected() {
-            totalSeconds = 3600;
+            totalSeconds = 5;
             console.log("One hour selected!")
+            showStart()
+            updateTimerDisplay()
         }
 
         function twoHourSelected() {
             totalSeconds = 3600 * 2;
             console.log("Two hours selected!")
+            showStart()
+            updateTimerDisplay()
         }
 
         function threeHourSelected() {
             totalSeconds = 3600 * 3;
             console.log("Three hours selected!")
+            showStart()
+            updateTimerDisplay()
         }
 
         async function delay(seconds) {
@@ -44,10 +55,19 @@
         }
 
         async function countdown() {
+            document.getElementById("timerControls").hidden = true;
+            document.getElementById("start").hidden = true;
             while (true) {
                 if (totalSeconds <= 0) {
+                    alert("Time is up!")
                     window.location.href = "finish.html"
                     return;
+                }
+                if (totalSeconds === 900) {
+                    document.getElementById("WarningMessage").textContent = "15 minutes remain.";
+                }
+                if (totalSeconds === 300) {
+                    document.getElementById("WarningMessage").textContent = "5 minutes remain.";
                 }
                 totalSeconds--;
                 await delay(1000);
