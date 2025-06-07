@@ -16,9 +16,11 @@ You can:
 4) Do your timed practice with no distractions, you only see the countdown (and the attachment, if any).
 5) Closed your attachment by mistake? No worries! Simply reopen it with the dedicated button.
 
+Take note that if you wish to project onto a larger screen (especially teachers who want to use it as a timing tool), please take note that Safe Exam Browser may NOT allow dual screens.
+
 # What does it NOT do?
 If you happen to do computing examinations, I'm sorry - so far the configuration file does NOT support having other applications open. 
 If you wish, you may consider having a virtual machine (locked down) and then having this open on another device.
 
 # I want to suggest something.
-Sure, no problem! Just find me on Telegram: [t.me/@zhd1987e]
+Sure, no problem! Just find me on Telegram [here](https://t.me/@zhd1987e)
