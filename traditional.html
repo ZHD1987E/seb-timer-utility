@@ -29,15 +29,19 @@
         const timeDurat = sessionStorage.getItem("duration");
         let now = new Date();
         let later = new Date(now.getTime() + timeDurat * 1000);
-        document.getElementById("startTime").innerHTML = "Start: " + now.getHours().padStart(2, "0") + ":" + now.getMinutes().padStart(2, "0");
-        document.getElementById("endTime").innerHTML = "End: " + later.getHours().padStart(2, "0") + ":" + later.getMinutes().padStart(2, "0");
+        document.getElementById("startTime").innerHTML = "Start: " + now.getHours().toString().padStart(2, "0") + ":" + now.getMinutes().toString().padStart(2, "0");
+        document.getElementById("endTime").innerHTML = "End: " + later.getHours().toString().padStart(2, "0") + ":" + later.getMinutes().toString().padStart(2, "0");
 
-        function endExam() {
+        async function endExam() {
             const intervalId = setInterval(() => {
                 const checkTime = new Date();
                 if (checkTime >= later) {
                     clearInterval(intervalId);
-                    window.location.href = "finish.html";
+                    document.getElementById("startTime").innerHTML = "Time's Up";
+                    document.getElementById("endTime").innerHTML = "";
+                    setTimeout(() => {
+                        window.location.href = "finish.html";
+                    }, 5000);
                 }
             }, 1000); // check every second
         }
