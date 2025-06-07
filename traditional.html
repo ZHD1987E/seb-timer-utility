@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Classroom View</title>
     <style>
         body {
         margin: 0;
@@ -33,13 +33,16 @@
         document.getElementById("endTime").innerHTML = "End: " + later.getHours() + ":" + later.getMinutes();
 
         function endExam() {
-            while (true) {
+            const intervalId = setInterval(() => {
                 const checkTime = new Date();
                 if (checkTime >= later) {
+                    clearInterval(intervalId);
                     window.location.href = "finish.html";
                 }
-            }
+            }, 1000); // check every second
         }
+
+        endExam();
     </script>
 </body>
 </html>
