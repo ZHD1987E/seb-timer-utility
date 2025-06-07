@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Test timer</h1>
+    <div id="timer">00:00</p>
+    <script>
+        let totalSeconds = 100
+        
+        function updateTimerDisplay() {
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        document.getElementById("timer").textContent =
+            String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
+        }
+
+        function countdown() {
+        if (totalSeconds <= 0) {
+            if (typeof seb !== 'undefined' && typeof seb.quit === 'function') {
+            seb.quit();  // Close SEB
+            } else {
+            alert("Timer done — SEB not detected.");
+            }
+            return;
+        }
+        totalSeconds--;
+        console.log(totalSeconds);
+        updateTimerDisplay();
+        }
+    </script>
+</body>
+</html>
