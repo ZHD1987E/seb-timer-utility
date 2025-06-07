@@ -4,42 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Timer</title>
+    <style>
+        #timer {
+            font-size:xx-large
+        }
+    </style>
 </head>
 <body>
     <h1>Simple Lockdown Timer</h1>
     <div id="timerControls">
-    <button id="1hselect">1 hour</button>
-    <button id="2hselect">2 hours</button>
-    <button id="3hselect">3 hours</button>
+    <select id="choosing">
+        <option value=3600>1 hour</option>
+        <option value=5400>1.5 hours</option>
+        <option value=7200>2 hours</option>
+        <option value=9000>2.5 hours</option>
+        <option value=10800>3 hours</option>
+        </select>
     </div>
     <p id="timer"></p>
     <p id="WarningMessage"></p>
     <button id="start" hidden = true>Start!</button>
     <script>
-        let totalSeconds = 5
-        
-        function showStart() {
-            document.getElementById("start").hidden = false
-        }
-        function oneHourSelected() {
-            totalSeconds = 5;
-            console.log("One hour selected!")
-            showStart()
-            updateTimerDisplay()
-        }
+        let totalSeconds = 0
 
-        function twoHourSelected() {
-            totalSeconds = 3600 * 2;
-            console.log("Two hours selected!")
-            showStart()
-            updateTimerDisplay()
-        }
-
-        function threeHourSelected() {
-            totalSeconds = 3600 * 3;
-            console.log("Three hours selected!")
-            showStart()
-            updateTimerDisplay()
+        function varyValue(chosenValue) {
+            console.log("A setting has changed!")
+            totalSeconds = Number(chosenValue);
+            updateTimerDisplay();
+            document.getElementById("start").hidden = false;
         }
 
         async function delay(seconds) {
@@ -75,11 +67,10 @@
                 updateTimerDisplay();
             }
         }
-
-        document.getElementById("1hselect").addEventListener("click", oneHourSelected);
-        document.getElementById("2hselect").addEventListener("click", twoHourSelected);
-        document.getElementById("3hselect").addEventListener("click", threeHourSelected);
         document.getElementById("start").addEventListener("click", countdown);
+        document.getElementById("choosing").addEventListener("click", function(event) {
+            varyValue(event.target.value);
+        });
     </script>
 </body>
 </html>
