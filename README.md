@@ -10,7 +10,7 @@ Do you:
 Simply put, it runs off a `.seb` configuration file - just have Safe Exam Browser installed, download the configuration file, and run it.
 
 You can:
-1) Set the desired time, or you can test it out with 30 seconds of lockdown
+1) Set the desired time, or you can test it out with 30 seconds of lockdown.
 2) Choose the exam attachments you want - so far I have the MF27 and the Chemistry Data Booklet installed. I can include more if you ask for it!
 3) Switch between normal count-down, or use it like your classroom exam: just display the start and end times!
 4) Do your timed practice with no distractions, you only see the countdown (and the attachment, if any).
