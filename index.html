@@ -11,7 +11,7 @@
     </style>
 </head>
 <body>
-    <h1>Simple Lockdown Timer</h1>
+    <h1>The lockdown timer...</h1>
     <div id="timerControls">
     <select id="choosing">
         <option value=30>30 seconds - TESTING USE ONLY!</option>
@@ -39,6 +39,7 @@
     <p id="timer"></p>
     <p id="WarningMessage"></p>
     <button id="start" hidden = true>Start!</button>
+    <button id="Reopenattachment" hidden = true>Reopen attachment?</button>
     <script>
         let totalSeconds = 0
 
@@ -74,9 +75,13 @@
                 switch (addnOpt) {
                     case "MathMF":
                         window.open("MF27.pdf", "_blank");
+                        document.getElementById("Reopenattachment").hidden = false;
+                        document.getElementById("Reopenattachment").addEventListener("click", function() {window.open("MF27.pdf", "_blank")});
                         break;
                     case "ChemDB":
                         window.open("CDB.pdf", "_blank");
+                        document.getElementById("Reopenattachment").hidden = false;
+                        document.getElementById("Reopenattachment").addEventListener("click", function() {window.open("CDB.pdf", "_blank")});
                         break;
                 }
                 
