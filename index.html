@@ -17,6 +17,8 @@
     </div>
     
     <div id="timerControls">
+    <label for="choosing">How long do you want your lockdown to be?</label>
+    <br>
     <select id="choosing">
         <option value=30>30 seconds - TESTING USE ONLY!</option>
         <option value=3000>50 minutes</option>
@@ -32,7 +34,8 @@
         </select>
     </div>
     <div id="someSettings">
-        <label for="additionalMaterias">Additional Materials you may need</label>
+        <label for="additionalMaterias">Additional materials you want to open</label>
+        <br>
         <select id="additionalMaterias">
             <option value="">None (Or you have the hardcopy reference material)</option>
             <optgroup label="A Level Use">
@@ -59,7 +62,8 @@
             </optgroup>
         </select>
         <br>
-        <label for="classroom mode">Enable Classroom mode? WARNING: You can only see the end time and there will be NO countdown!</label>
+        <label for="classroom mode">Enable Classroom mode? WARNING: You can <strong>ONLY</strong> see the end time!</label>
+        <br>
         <select id="classroom mode">
             <option value="false">Disable</option>
             <option value="true">Enable</option>
