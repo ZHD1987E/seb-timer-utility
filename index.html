@@ -11,14 +11,23 @@
     </style>
 </head>
 <body>
-    <h1>The lockdown timer...</h1>
+    <div id="intro">
+        <h1>Your lockdown timer</h1>
+        <p>Helping you concentrate, since 2025...</p>
+    </div>
+    
     <div id="timerControls">
     <select id="choosing">
         <option value=30>30 seconds - TESTING USE ONLY!</option>
+        <option value=3000>50 minutes</option>
         <option value=3600>1 hour</option>
-        <option value=5400>1.5 hours</option>
+        <option value=4500>1 hour 15 minutes</option>
+        <option value=5400>1 hour 30 minutes</option>
+        <option value=6300>1 hour 45 minutes</option>
         <option value=7200>2 hours</option>
-        <option value=9000>2.5 hours</option>
+        <option value=8100>2 hours 15 minutes</option>
+        <option value=9000>2 hours 30 minutes</option>
+        <option value=9900>2 hours 45 minutes</option>
         <option value=10800>3 hours</option>
         </select>
     </div>
@@ -92,6 +101,9 @@
                         await delay(3000);
                         window.location.href = "finish.html"
                         return;
+                    }
+                    if (totalSeconds <= 900) {
+                        document.getElementById("timer").style.color = "red"; 
                     }
                     totalSeconds--;
                     await delay(1000);
