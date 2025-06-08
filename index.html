@@ -15,6 +15,9 @@
         <h1>Your lockdown timer</h1>
         <p>Helping you concentrate, since 2025...</p>
     </div>
+    <div id="proof">
+        <p>Want to test if you really can go anywhere else? <a href="https://www.google.com">Click here!</a></p>
+    </div>
     
     <div id="timerControls">
     <label for="choosing">How long do you want your lockdown to be?</label>
@@ -99,6 +102,7 @@
             document.getElementById("timerControls").hidden = true;
             document.getElementById("start").hidden = true;
             document.getElementById("someSettings").hidden = true;
+            document.getElementById("proof").hidden = true;
             updateTimerDisplay();
             const addnOpt = document.getElementById("additionalMaterias").value;
             const tradMode = document.getElementById("classroom mode").value;

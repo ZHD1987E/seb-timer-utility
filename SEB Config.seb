@@ -89,7 +89,7 @@
     <key>audioControlEnabled</key>
     <false />
     <key>audioMute</key>
-    <false />
+    <true />
     <key>audioVolumeLevel</key>
     <integer>25</integer>
     <key>audioSetVolumeLevel</key>
@@ -215,7 +215,7 @@
     <key>quitURL</key>
     <string>https://zhd1987e.github.io/seb-timer-utility/finish.html</string>
     <key>quitURLConfirm</key>
-    <true />
+    <false />
     <key>restartExamURL</key>
     <string />
     <key>restartExamUseStartURL</key>
