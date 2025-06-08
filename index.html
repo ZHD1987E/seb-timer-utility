@@ -20,13 +20,14 @@
     </div>
     <div id="proof">
         <p>Want to test if you really can go anywhere else? <a href="https://www.google.com">Click here!</a></p>
+        <label for="accidentalexit">If you opened it by accident and want to quit, please click this button: </label>
+        <button id="accidentalexit">Exit!</button>
     </div>
     
     <div id="timerControls">
     <label for="choosing">How long do you want your lockdown to be?</label>
     <br>
     <select id="choosing">
-        <option value=30>30 seconds - TESTING USE ONLY!</option>
         <option value=3000>50 minutes</option>
         <option value=3600>1 hour</option>
         <option value=4500>1 hour 15 minutes</option>
@@ -137,6 +138,10 @@
         document.getElementById("choosing").addEventListener("click", function(event) {
             varyValue(event.target.value);
         });
+        document.getElementById("accidentalexit").addEventListener("click", function() {
+            alert("You are about to exit. Press 'OK' to continue.");
+            window.location.href = "finish.html";
+        })
     </script>
 </body>
 </html>
