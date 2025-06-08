@@ -32,11 +32,31 @@
         </select>
     </div>
     <div id="someSettings">
-        <label for="additionalMaterias">Additional Materials You may need</label>
+        <label for="additionalMaterias">Additional Materials you may need</label>
         <select id="additionalMaterias">
-            <option value="">None</option>
-            <option value="MathMF">MF27 (ONLY for Mathematics Paper)</option>
-            <option value="ChemDB">Data Booklet for Chemistry</option>
+            <option value="">None (Or you have the hardcopy reference material)</option>
+            <optgroup label="A Level Use">
+                <option value="AMF27">MF27 for Mathematics</option>
+                <option value="ACDB">Data Booklet for Chemistry</option>
+                <option value="ADAF">List of Data and Formulae for Physics</option>
+            </optgroup>
+            <optgroup label="O Level Use">
+                <option value="OAMF">Formulae List for Additional Mathematics</option>
+                <option value="OEMF">Formulae List for (Elementary) Mathematics</option>
+                <option value="OELDF">Data and Formulae for Electronics</option>
+                <option value="ODSCMH">Colours of some common Metal Hydroxides for Combined Science (Chemistry)</option>
+                <option value="OPN">Practical Notes for Chemistry</option>
+                <option value="OPT">Periodic Table for Chemistry</option>
+            </optgroup>
+            <optgroup label="N(A) Level Use">
+                <option value="NAAMF">Formulae List for Additional Mathematics</option>
+                <option value="NAEMF">Formulae List for (Elementary) Mathematics</option>
+                <option value="NAPN">Practical Notes for Chemistry</option>
+                <option value="NAPT">Periodic Table for Chemistry</option>
+            </optgroup>
+            <optgroup label="N(T) Level Use">
+                <option value="NTEMF">Formulae List for Mathematics</option>
+            </optgroup>
         </select>
         <br>
         <label for="classroom mode">Enable Classroom mode? WARNING: You can only see the end time and there will be NO countdown!</label>
@@ -82,18 +102,8 @@
                 sessionStorage.setItem("duration", totalSeconds);
                 window.location.href = "traditional.html";
             } else {
-                switch (addnOpt) {
-                    case "MathMF":
-                        window.open("MF27.pdf", "_blank");
-                        document.getElementById("Reopenattachment").hidden = false;
-                        document.getElementById("Reopenattachment").addEventListener("click", function() {window.open("MF27.pdf", "_blank")});
-                        break;
-                    case "ChemDB":
-                        window.open("CDB.pdf", "_blank");
-                        document.getElementById("Reopenattachment").hidden = false;
-                        document.getElementById("Reopenattachment").addEventListener("click", function() {window.open("CDB.pdf", "_blank")});
-                        break;
-                }
+                const fileToOpen = "assets/" + addnOpt + ".pdf"
+                window.open(fileToOpen, "_blank");
                 while (true) {
                     if (totalSeconds <= 0) {
                         document.getElementById("timer").textContent = "Time's up!!!";
